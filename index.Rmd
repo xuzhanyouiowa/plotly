@@ -3,9 +3,10 @@ title: "plotly week 3"
 author: "Zhanyou Xu"
 date: "August 2, 2018"
 output: html_document
+## please note: chrome may not be able to show all the contents, pleasee try IE if not
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r, echo=FALSE}
@@ -52,7 +53,7 @@ p3
 p4= matrix(rnorm(96), nrow = 8, ncol = 12)
 colnames(p4) =seq(1:12)
 rownames(p4)= c("A", "B","C","D","E","F","G","H")
-p4
+
 plot_ly(y= rownames(p4), x= colnames(p4),
   z = p4, type = "surface", # type= "heatmap" for heatmap
   title= "Heat of PCR plate")
