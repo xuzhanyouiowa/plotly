@@ -1,0 +1,62 @@
+---
+title: "plotly week 3"
+author: "Zhanyou Xu"
+date: "August 2, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(plotly)
+
+```
+
+```{r}
+# chaneg color by variables
+pal1= c("red", "blue", "green")
+p1= plot_ly(data = mtcars,
+            x= ~wt, y=~mpg,
+            type="scatter",
+            mode= "markers",
+            marker = list(size=20),
+            color=~ as.factor(cyl),
+            colors=pal1
+            )
+p1
+```
+```{r}
+# ggplotly with ggplot2
+d1000=diamonds[ sample(nrow(diamonds), 1000), ]
+p2= ggplot(data = d1000,aes(x=carat, y=price))+
+  geom_point(aes(text=paste0("Clarity:", clarity, sep="")), size=5)+
+  geom_smooth(method = "loess")+
+  geom_smooth(aes(colour=cut, fill=cut))+
+   facet_wrap(.~cut)+
+  ggtitle("Carat vs Price by cut")
+ggplotly(p2) 
+
+```
+```{r}
+# 3D plot
+p3= plot_ly(data=mtcars,
+            x=~wt, y=~mpg, z=~disp,
+            type = "scatter3d",
+            mode="markers", color=~as.factor(cyl))
+
+p3
+```
+```{r}
+# heat map
+p4= matrix(rnorm(96), nrow = 8, ncol = 12)
+colnames(p4) =seq(1:12)
+rownames(p4)= c("A", "B","C","D","E","F","G","H")
+p4
+plot_ly(y= rownames(p4), x= colnames(p4),
+  z = p4, type = "surface", # type= "heatmap" for heatmap
+  title= "Heat of PCR plate")
+
+```
+
+
