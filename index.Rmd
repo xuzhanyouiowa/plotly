@@ -8,12 +8,12 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r}
+```{r, echo=FALSE}
 library(plotly)
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 # chaneg color by variables
 pal1= c("red", "blue", "green")
 p1= plot_ly(data = mtcars,
@@ -26,7 +26,7 @@ p1= plot_ly(data = mtcars,
             )
 p1
 ```
-```{r}
+```{r, echo=FALSE}
 # ggplotly with ggplot2
 d1000=diamonds[ sample(nrow(diamonds), 1000), ]
 p2= ggplot(data = d1000,aes(x=carat, y=price))+
@@ -38,7 +38,7 @@ p2= ggplot(data = d1000,aes(x=carat, y=price))+
 ggplotly(p2) 
 
 ```
-```{r}
+```{r, echo=FALSE}
 # 3D plot
 p3= plot_ly(data=mtcars,
             x=~wt, y=~mpg, z=~disp,
@@ -47,7 +47,7 @@ p3= plot_ly(data=mtcars,
 
 p3
 ```
-```{r}
+```{r, echo=FALSE}
 # heat map
 p4= matrix(rnorm(96), nrow = 8, ncol = 12)
 colnames(p4) =seq(1:12)
